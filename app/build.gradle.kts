@@ -1,5 +1,8 @@
 plugins {
     id("com.android.application")
+    //id("org.jetbrains.kotlin.android")
+    //id("com.google.devtools.ksp") version "1.9.0-1.0.13"
+    id("com.google.devtools.ksp") version "1.9.21-1.0.15"
     id("org.jetbrains.kotlin.android")
 }
 
@@ -40,7 +43,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = "1.5.3"
     }
     packaging {
         resources {
@@ -67,8 +70,12 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
+
     //--Room--
     val room_version = "2.6.1"
     implementation("androidx.room:room-runtime:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
+    ksp ("androidx.room:room-compiler:$room_version")
+    //ksp ("androidx.room:room-compiler:$room_version")
 }
